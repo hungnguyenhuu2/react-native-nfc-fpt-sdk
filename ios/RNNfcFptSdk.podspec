@@ -1,4 +1,7 @@
 
+require "json"
+
+package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 Pod::Spec.new do |s|
   s.name         = "RNNfcFptSdk"
   s.version      = "1.0.0"
@@ -14,11 +17,11 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/author/RNNfcFptSdk.git", :tag => "master" }
   s.source_files  = "RNNfcFptSdk/**/*.{h,m}"
   s.requires_arc = true
-
-
+s.vendored_frameworks = [
+    'ios/NFCReader.framework'
+  ]
   s.dependency "React"
-  #s.dependency "others"
+  s.dependency "React-Core"
+  s.dependency "OpenSSL-Universal"
 
 end
-
-  
